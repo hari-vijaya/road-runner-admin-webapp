@@ -1,0 +1,22 @@
+agm-map {
+  height: 300px;
+}
+
+.text-inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.actions-area {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+.mat-radio-group{
+  display: inline-flex;
+  flex-direction: row;
+  .mat-radio-button{
+    margin: 25px 0;
+  }
+}

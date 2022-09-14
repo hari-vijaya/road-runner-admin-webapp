@@ -40,3 +40,19 @@ export type Address = {
     type: 'Point';
   };
 };
+export type Drivers = {
+      "id": string,
+      "firstName": string,
+      "lastName": string,
+      "email": string,
+      "license": string,
+      "dateOfBirth": Date,
+      "contactNumber": number,
+      "address": string,
+      "kilometersDriven": number,
+      "status": string,
+      "driverCurrentLocation": string,
+      "rating": string,
+      "bloodGroup": string,
+      "gender": string,
+}

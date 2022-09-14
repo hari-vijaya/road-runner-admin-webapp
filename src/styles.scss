@@ -3,3 +3,11 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: beige;}
 
+// Import functions, variables, and mixins needed by other Bootstrap files
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// Import Bootstrap Reboot
+//@import "~bootstrap/scss/root"; // Contains :root CSS variables used by other Bootstrap files
+@import "~bootstrap/scss/reboot";

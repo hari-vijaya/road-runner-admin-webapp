@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { WarehouseComponent } from './warehouse/warehouse.component';
-import { MatOptionModule, MatRippleModule } from '@angular/material/core';
+import {MatNativeDateModule, MatOptionModule, MatRippleModule} from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddWarehouseDialogComponent } from './add-warehouse-dialog/add-warehouse-dialog.component';
@@ -24,6 +24,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { AddVehicleDialogComponent } from './add-vehicle-dialog/add-vehicle-dialog.component';
 import { DriversComponent } from './drivers/drivers.component';
+import {AddDriversComponent} from "./add-drivers/add-drivers.component";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -35,6 +39,7 @@ import { DriversComponent } from './drivers/drivers.component';
     VehiclesComponent,
     AddVehicleDialogComponent,
     DriversComponent,
+    AddDriversComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,7 @@ import { DriversComponent } from './drivers/drivers.component';
     MatDialogModule,
     MatInputModule,
     FormsModule,
+    MatNativeDateModule,
     ReactiveFormsModule,
     GooglePlaceModule,
     MatTooltipModule,
@@ -58,6 +64,9 @@ import { DriversComponent } from './drivers/drivers.component';
       apiKey: 'AIzaSyBWNCWizzY1UcYKTG8bzSQxV-gSerIojjg',
       libraries: ['places'],
     }),
+    MatRadioModule,
+    MatDatepickerModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

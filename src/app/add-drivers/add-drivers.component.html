@@ -1,0 +1,210 @@
+<form class="add-warehouse-form" style="overflow: auto">
+  <h1>Add Drivers</h1>
+  <form [formGroup]="driverDetailsFormControl">
+  <div class="text-inputs">
+    <mat-form-field appearance="outline">
+      <input
+        formControlName="firstName"
+        required
+        matInput
+        class="form-control"
+        (keydown.enter)="$event.preventDefault()"
+        placeholder="First Name"
+        autocapitalize="off"
+        type="text"
+      />
+      <mat-error *ngIf="driverDetailsFormControl.controls['firstName'].errors?.['required']"
+        >First Name should not be empty</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" >
+      <input
+        formControlName="lastName"
+        required
+        matInput
+        class="form-control"
+        (keydown.enter)="$event.preventDefault()"
+        placeholder="Last Name"
+        autocapitalize="off"
+        type="text"
+      />
+      <mat-error *ngIf="driverDetailsFormControl.controls['lastName'].errors?.['required']"
+      >Last Name should not be empty</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input
+        formControlName="email"
+        required
+        matInput
+        class="form-control"
+        (keydown.enter)="$event.preventDefault()"
+        placeholder="Email"
+        autocapitalize="off"
+        type="text"
+      />
+      <mat-error *ngIf="driverDetailsFormControl.controls['email'].errors?.['required']"
+      >Email should not be empty</mat-error>
+    </mat-form-field>
+
+
+  </div>
+    <div class="text-inputs">
+      <mat-form-field appearance="outline">
+        <input
+          formControlName="driverCurrentLocation"
+          required
+          matInput
+          class="form-control"
+          (keydown.enter)="$event.preventDefault()"
+          placeholder="Driver Current Location"
+          autocapitalize="off"
+          type="text"
+        />
+        <!--      <mat-error *ngIf="driverDetailsFormControl.controls.driverCurrentLocation.errors?.required"-->
+        <!--      >Driver Current Location should not be empty</mat-error>-->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input
+          formControlName="rating"
+          required
+          matInput
+          class="form-control"
+          (keydown.enter)="$event.preventDefault()"
+          placeholder="Rating"
+          autocapitalize="off"
+          type="text"
+        />
+        <!--      <mat-error *ngIf="driverDetailsFormControl.controls.rating.errors?.required"-->
+        <!--      >Rating should not be empty</mat-error>-->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input
+          formControlName="contactNumber"
+          required
+          matInput
+          class="form-control"
+          (keydown.enter)="$event.preventDefault()"
+          placeholder="Contact Number"
+          autocapitalize="off"
+          type="text"
+        />
+        <!--      <mat-error *ngIf="driverDetailsFormControl.controls.contactNumber.errors?.required"-->
+        <!--      >Contact Number should not be empty</mat-error>-->
+      </mat-form-field>
+
+    </div>
+
+    <mat-radio-group formControlName="gender" style="width: 100%" required>
+        <mat-radio-button value="Male" labelPosition="before">Male</mat-radio-button>&nbsp;&nbsp;
+        <mat-radio-button value="Female" labelPosition="before">Female</mat-radio-button>
+      </mat-radio-group>
+      <mat-form-field style="width: 45%; padding: 2px" >
+        <input matInput  [matDatepicker]="from" placeholder="Date Of Birth" formControlName="dateOfBirth"  required>
+        <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
+        <mat-datepicker touchUi="true" #from></mat-datepicker>
+        <!--      <mat-error *ngIf="driverDetailsFormControl.controls.dateOfBirth.errors?.required"-->
+        <!--      >Date Of Birth should not be empty</mat-error>-->
+      </mat-form-field>&nbsp;&nbsp;
+    <mat-form-field style="width: 45%; padding: 2px" >
+      <mat-select matInput placeholder="Select Status" formControlName="status" required>
+        <mat-option  value="1" >Active</mat-option>
+        <mat-option  value="2" >Inactive</mat-option>
+        <mat-option  value="3" >Blacklisted</mat-option>
+        <mat-option  value="4" >Deleted</mat-option>
+      </mat-select>
+      <!--      <mat-error *ngIf="driverDetailsFormControl.controls.status.errors?.required">Status is required</mat-error>-->
+    </mat-form-field>
+      <mat-form-field style="width: 45%; padding: 2px"  appearance="outline">
+        <input
+          formControlName="license"
+          required
+          matInput
+          class="form-control"
+          (keydown.enter)="$event.preventDefault()"
+          placeholder="License"
+          autocapitalize="off"
+          type="text"
+        />
+        <mat-error *ngIf="driverDetailsFormControl.controls['license'].errors?.['required']"
+        >License should not be empty</mat-error>
+      </mat-form-field>&nbsp;&nbsp;
+
+      <mat-form-field style="width: 45%; padding: 2px"  appearance="outline">
+        <input
+          formControlName="address"
+          required
+          matInput
+          class="form-control"
+          (keydown.enter)="$event.preventDefault()"
+          placeholder="Address"
+          autocapitalize="off"
+          type="text"
+        />
+        <!--      <mat-error *ngIf="driverDetailsFormControl.controls.address.errors?.required"-->
+        <!--      >Address should not be empty</mat-error>-->
+      </mat-form-field>
+
+
+
+
+      <mat-form-field style="width: 45%; padding: 2px" appearance="outline">
+        <input
+          formControlName="kilometersDriven"
+          required
+          matInput
+          class="form-control"
+          (keydown.enter)="$event.preventDefault()"
+          placeholder="Kilometers Driven"
+          autocapitalize="off"
+          type="text"
+        />
+        <!--      <mat-error *ngIf="driverDetailsFormControl.controls.kilometersDriven.errors?.required"-->
+        <!--      >Kilometers Driven should not be empty</mat-error>-->
+      </mat-form-field>&nbsp;&nbsp;
+      <mat-form-field appearance="outline" style="width: 45%; padding: 2px">
+        <input
+          formControlName="bloodGroup"
+          required
+          matInput
+          class="form-control"
+          (keydown.enter)="$event.preventDefault()"
+          placeholder="Blood Group"
+          autocapitalize="off"
+          type="text"
+        />
+        <!--      <mat-error *ngIf="driverDetailsFormControl.controls.bloodGroup.errors?.required"-->
+        <!--      >Blood Group should not be empty</mat-error>-->
+      </mat-form-field>
+
+
+  </form>
+<!--  <mat-form-field style="width: 100%" appearance="outline">-->
+<!--    <input-->
+<!--      [formControl]="warehouseAddressFormControl"-->
+<!--      matInput-->
+<!--      class="form-control"-->
+<!--      (keydown.enter)="$event.preventDefault()"-->
+<!--      placeholder="Address"-->
+<!--      ngx-google-places-autocomplete-->
+<!--      placeholder="Search address"-->
+<!--      autocorrect="off"-->
+<!--      autocapitalize="off"-->
+<!--      spellcheck="off"-->
+<!--      type="text"-->
+<!--      id="originInputRef"-->
+<!--      #originInputRef="ngx-places"-->
+<!--      (onAddressChange)="handleOriginAddressChange($event)"-->
+<!--    />-->
+<!--  </mat-form-field>-->
+<!--  <agm-map [zoom]="zoom" [latitude]="originLat" [longitude]="originLng">-->
+<!--    <agm-marker-->
+<!--      [latitude]="originLat"-->
+<!--      [longitude]="originLng"-->
+<!--      [markerDraggable]="true"-->
+<!--      (dragEnd)="markerDragEnd($event)"-->
+<!--    ></agm-marker>-->
+<!--  </agm-map>-->
+  <div class="actions-area">
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <button mat-button color="primary"  (click)="saveDriver()">Add Driver</button>
+  </div>
+</form>
