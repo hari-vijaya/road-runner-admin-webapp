@@ -1,0 +1,75 @@
+<form class="add-warehouse-form">
+  <h1>Add Warehouse</h1>
+  <div class="text-inputs">
+    <mat-form-field appearance="outline">
+      <input
+        [formControl]="warehouseNameFormControl"
+        required
+        matInput
+        class="form-control"
+        (keydown.enter)="$event.preventDefault()"
+        placeholder="Warehouse Name"
+        autocapitalize="off"
+        type="text"
+      />
+      <mat-error *ngIf="warehouseNameFormControl.hasError('required')"
+        >WarehouseName should not be empty</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input
+        [formControl]="warehouseContactNoFormControl"
+        required
+        matInput
+        class="form-control"
+        (keydown.enter)="$event.preventDefault()"
+        placeholder="Contact Number"
+        autocapitalize="off"
+        type="text"
+      />
+       <mat-error *ngIf="warehouseContactNoFormControl.hasError('required')"
+        >Contact number should not be empty</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input
+        [formControl]="managerFormControl"
+        required
+        matInput
+        class="form-control"
+        (keydown.enter)="$event.preventDefault()"
+        placeholder="Manager"
+      />
+             <mat-error *ngIf="managerFormControl.hasError('required')"
+        >Manager should not be empty</mat-error>
+    </mat-form-field>
+  </div>
+  <mat-form-field style="width: 100%" appearance="outline">
+    <input
+      [formControl]="warehouseAddressFormControl"
+      matInput
+      class="form-control"
+      (keydown.enter)="$event.preventDefault()"
+      placeholder="Address"
+      ngx-google-places-autocomplete
+      placeholder="Search address"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="off"
+      type="text"
+      id="originInputRef"
+      #originInputRef="ngx-places"
+      (onAddressChange)="handleOriginAddressChange($event)"
+    />
+  </mat-form-field>
+  <agm-map [zoom]="zoom" [latitude]="originLat" [longitude]="originLng">
+    <agm-marker
+      [latitude]="originLat"
+      [longitude]="originLng"
+      [markerDraggable]="true"
+      (dragEnd)="markerDragEnd($event)"
+    ></agm-marker>
+  </agm-map>
+  <div class="actions-area">
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <button mat-button color="primary" [disabled]="!isValidForm()" (click)="saveWarehouse()">Add Warehouse</button>
+  </div>
+</form>

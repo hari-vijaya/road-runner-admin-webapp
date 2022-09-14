@@ -1,0 +1,109 @@
+<h1 class="vehicle-title">Manage vehicles</h1>
+<div class="manage-vehicle">
+  <div>
+    <div class="mat-elevation-z8 vehicle-table">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Name Column -->
+        <ng-container matColumnDef="vin">
+          <th mat-header-cell *matHeaderCellDef>Vin</th>
+          <td mat-cell *matCellDef="let element">
+            <strong>{{ element.vin }}</strong>
+          </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="vehicleNumber">
+          <th mat-header-cell *matHeaderCellDef>Vehicle Number</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.vehicleNumber }}
+          </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="make">
+          <th mat-header-cell *matHeaderCellDef>Make</th>
+          <td mat-cell *matCellDef="let element">{{ element.make }}</td>
+        </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="model">
+          <th mat-header-cell *matHeaderCellDef>Model</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.model }}
+          </td>
+        </ng-container>
+         <ng-container matColumnDef="insurancePolicyNumber">
+          <th mat-header-cell *matHeaderCellDef>Insurance Policy Number</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.insurancePolicyNumber }}
+          </td>
+        </ng-container>
+         <ng-container matColumnDef="materialType">
+          <th mat-header-cell *matHeaderCellDef>Material Type</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.materialType }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          (click)="selectedRows(row)"
+        ></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="view-vehicle-details mat-elevation-z8">
+    <div
+      *ngIf="!(selectedRow.vin !== '')"
+      style="text-align: center; margin: auto"
+    >
+      <mat-icon style="font-size: 64px; height: 60px; width: 60px"
+        >directions_car</mat-icon
+      >
+      <h1>No vehicle selected</h1>
+      <p>Please select any vehicle to get show details.</p>
+    </div>
+    <div *ngIf="selectedRow.vin !== ''">
+      <div
+        style="display: flex; align-items: center; text-decoration: underline"
+      >
+        <h1>
+          <strong>{{ selectedRow.vin }}</strong>
+        </h1>
+      </div>
+      <div style="display: flex; align-items: bottom">
+        <mat-icon style="font-size: 16px">phone</mat-icon>
+        {{ selectedRow.vin }}
+      </div>
+      <!-- <div style="display: flex; align-items: bottom">
+        <mat-icon style="font-size: 16px">email</mat-icon>
+        {{ selectedRow.personIncharge }}
+      </div>
+      <div style="display: flex; align-items: bottom">
+        <mat-icon style="font-size: 16px">business</mat-icon>
+        {{ selectedRow.address }}
+      </div> -->
+      <agm-map
+        [zoom]="15"
+        [latitude]="selectedRow.currentLocation.x"
+        [longitude]="selectedRow.currentLocation.y"
+      >
+        <agm-marker
+          [latitude]="selectedRow.currentLocation.x"
+          [longitude]="selectedRow.currentLocation.y"
+        ></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</div>
+
+<button
+  mat-fab
+  aria-label="Example icon button with a delete icon"
+  class="add-vehicle-floating-button"
+  (click)="openDialog()"
+>
+  <mat-icon>add</mat-icon>
+</button>

@@ -1,0 +1,65 @@
+table {
+  width: 100%;
+  background: bisque;
+}
+
+.vehicle-table {
+  margin-left: 100px;
+  width: 900px;
+}
+
+.vehicle-title {
+  margin-top: 32px;
+  margin-left: 100px;
+}
+
+.add-vehicle-floating-button {
+  right: 40px;
+  bottom: 25px;
+  width: 60px !important;
+  height: 60px !important;
+  position: absolute;
+  background-color: cadetblue;
+  color: black;
+}
+
+tr.mat-row:hover {
+  cursor: pointer;
+  background-color: lightsalmon;
+}
+
+tr.mat-row:focus {
+  background-color: lightsalmon;
+}
+
+.manage-vehicle {
+  display: flex;
+  flex-direction: row;
+}
+
+.view-vehicle-details {
+  margin-left: 64px;
+  min-height: 70vh;
+  padding: 24px 64px;
+  width: 400px;
+  display: flex;
+  align-items: center;
+}
+
+agm-map {
+  margin-top: 24px;
+  width: 100%;
+  height: 500px;
+}
+
+.mat-column-address {
+  flex: 0 0 8% !important;
+  width: 40% !important;
+  word-break: unset;
+  word-wrap: unset;
+  overflow-wrap: unset;
+  -webkit-hyphens: unset;
+  -moz-hyphens: unset;
+  -ms-hyphens: unset;
+  hyphens: unset;
+}

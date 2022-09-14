@@ -1,0 +1,16 @@
+.menu-item {
+  height: 64px;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.menu-item:hover,
+.active-link {
+  background-color: darkseagreen;
+}
+
+.menu-content {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
