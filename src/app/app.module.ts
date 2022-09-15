@@ -28,6 +28,10 @@ import {AddDriversComponent} from "./add-drivers/add-drivers.component";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSelectModule} from "@angular/material/select";
+import {NavigationComponent} from "./navigation/navigation.component";
+import {AgmDirectionModule} from "agm-direction";
+import {GoogleMapsAPIWrapper} from '@agm/core';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -39,7 +43,8 @@ import {MatSelectModule} from "@angular/material/select";
     VehiclesComponent,
     AddVehicleDialogComponent,
     DriversComponent,
-    AddDriversComponent
+    AddDriversComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,7 @@ import {MatSelectModule} from "@angular/material/select";
     MatTableModule,
     MatDialogModule,
     MatInputModule,
+    MatAutocompleteModule,
     FormsModule,
     MatNativeDateModule,
     ReactiveFormsModule,
@@ -67,8 +73,9 @@ import {MatSelectModule} from "@angular/material/select";
     MatRadioModule,
     MatDatepickerModule,
     MatSelectModule,
+    AgmDirectionModule,
   ],
-  providers: [],
+  providers: [GoogleMapsAPIWrapper],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

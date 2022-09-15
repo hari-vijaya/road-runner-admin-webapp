@@ -43,4 +43,11 @@ export class RoadRunnerService {
       'https://roadrunnerapi-7zjtqk6yoq-el.a.run.app:443/drivers/getAll'
     );
   }
+  getStartPickups(id: any) {
+    return this.httpClient.post(
+      'https://vehiclecapacityplanner-7zjtqk6yoq-el.a.run.app:443/vehicle-capacity-service/warehouse/start-pick-ups?warehouseId=' + id,
+      {}
+    );
+  }
+
 }

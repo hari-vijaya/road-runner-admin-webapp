@@ -1,0 +1,40 @@
+<div>
+  <h1 style="padding: 10px">Generate Orders Navigation</h1>
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="outline" style="width: 50%; padding: 2px; margin: 8px">
+    <mat-label>Select Warehouse</mat-label>
+    <input type="text"
+           placeholder="Select Warehouse"
+           aria-label="Select Warehouse"
+           matInput
+           [formControl]="myControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions" [value]="options" (click)="_filter(option)">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="getPickup()">Get Navigation Pickup</button>&nbsp;&nbsp;
+  <button mat-raised-button color="primary">Get Navigation Delivery</button>
+</form>
+</div>
+<div style="padding: 20px 50px 50px 20px" *ngIf="showMap">
+<agm-map>
+<agm-direction
+  *ngFor="let route of routes"
+  [origin]="origin1"
+  [destination]="destination1"
+  [renderOptions]="route.renderOptions"
+  [markerOptions]="markerOptions"
+  [waypoints]="route.waypoints"
+>
+</agm-direction>
+<!--<agm-direction-->
+<!--  [origin]="origin2"-->
+<!--  [destination]="destination2"-->
+<!--  [renderOptions]="renderOptions"-->
+<!--  [markerOptions]="markerOptions">-->
+<!--</agm-direction>-->
+</agm-map>
+</div>

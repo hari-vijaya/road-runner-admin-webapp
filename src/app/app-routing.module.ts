@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DriversComponent } from './drivers/drivers.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { WarehouseComponent } from './warehouse/warehouse.component';
+import {NavigationComponent} from "./navigation/navigation.component";
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
     path: 'drivers',
     component: DriversComponent,
   },
+  {
+    path: 'navigation',
+    component: NavigationComponent,
+  }
 ];
 
 @NgModule({
