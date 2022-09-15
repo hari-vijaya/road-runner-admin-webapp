@@ -24,6 +24,7 @@ export class NavigationComponent implements OnInit {
     // polylineOptions: { strokeColor: '#0f0' }
   };
   showMap = false;
+  showDelivery = false;
 
   public dirs: Array<DirectionsAgm> = [
     {
@@ -58,7 +59,10 @@ export class NavigationComponent implements OnInit {
 
   origin = { lat: 12.9900181, lng: 80.2165848 };
   destination = { lat: 10.9651497, lng: 78.0329381 };
-  waypoints : google.maps.DirectionsWaypoint[];
+  waypoints : any;
+  waypoints1: any;
+  waypoints2: any;
+
   @ViewChild('placesRef') placesRef: GooglePlaceDirective;
 
   constructor(private roadRunnerService: RoadRunnerService) {}
@@ -144,24 +148,28 @@ export class NavigationComponent implements OnInit {
       });
   }
   getDelivery() {
-    this.showMap = true;
+    this.showDelivery = true;
     this.origin1 = {
-      lat: this.currentWarehouse.warehouseLocation.location.x,
-      lng: this.currentWarehouse.warehouseLocation.location.y,
+      lat: 10.960202,
+      lng: 78.0753557,
     };
     this.roadRunnerService
       .getDelivery(this.currentWarehouse.id)
       .subscribe((res: any) => {
         console.log(res, 'response');
         this.dirs = [];
-        this.waypoints = [];
         res.filter((routes: any) => {
+          let dest =  routes.packageStatuses.splice(routes.packageStatuses.length - 1);
+          console.log(dest, "dest");
+          this.waypoints = [];
           if (routes.packageStatuses.length > 0) {
             routes.packageStatuses.filter((waypoints: any) => {
               this.waypoints.push({
                 location:
-                  new google.maps.LatLng(waypoints.address.location.x,  waypoints.address.location.y)
-              });
+                  new google.maps.LatLng(waypoints.address.location.x,  waypoints.address.location.y),
+                stopover:true,
+              },
+              );
             });
 
             let maxVal = 0xffffff; // 16777215
@@ -172,30 +180,49 @@ export class NavigationComponent implements OnInit {
             const color = '#' + randomColor;
             this.dirs.push({
               origin: new google.maps.LatLng(10.8298389, 78.66647329999999),
-              destination: new google.maps.LatLng(
-                10.8298389,
-                78.66647329999999
-              ),
+              destination: new google.maps.LatLng(dest[0].address.location.x, dest[0].address.location.y),
               waypoints: this.waypoints,
               renderOptions: {
-                polylineOptions: { strokeColor: 'blue' },
+                polylineOptions: { strokeColor: color },
               },
             });
 
             console.log(this.dirs, 'rourttes');
           }
         });
-
-        this.destination1 = {
-          lat: res[res.length - 1].packageStatuses[res[res.length - 1].packageStatuses.length - 1].address.location.x,
-          lng: res[res.length - 1].packageStatuses[res[res.length - 1].packageStatuses.length - 1].address.location.y,
-        };
-        console.log(this.destination1, 'destination1');
+        // trichy vehicle 1
+        // this.origin = {
+        //   lat: 10.7905,
+        //   lng: 78.7047,
+        // };
+        // this.destination = {
+        //   lat: 9.9450836,
+        //   lng: 78.1570216,
+        // }
         // this.waypoints = [
-        //   {location: { lat: res.packageStatuses.address.location.x, lng: res.packageStatuses.address.location.y }},
-        //   {location: { lat: 11.6692642, lng: 78.1101747 }},
-        //   {location: { lat: 11.775541, lng: 77.7983797 }},
-        //   {location: { lat: 10.6475225, lng: 76.9639036 }}
+        //   {location: { lat: 10.960202, lng: 78.0753557 }},
+        //   {location: { lat: 11.6690607, lng: 78.1393126 }},
+        //   {location: { lat: 11.0304324, lng: 77.03909279999999 }},
+        //   {location: { lat: 10.5152497, lng: 76.2081445 }},
+        //   {location: { lat: 10.0863704, lng: 77.0619591 }},
+        // ];
+        // //vehicle 2
+        // this.destination1 = {
+        //   lat: 13.0662695,
+        //   lng: 80.2054082
+        // }
+        // this.waypoints1 = [
+        //   {location: { lat: 11.9400661, lng: 79.4861296 }},
+        //   {location: { lat: 12.2399439, lng: 79.0735036 }},
+        //   {location: { lat: 12.9345943, lng: 79.13655899999999 }}
+        // ];
+        // //vehicle 3
+        // this.destination2 = {
+        //   lat: 13.0826802,
+        //   lng: 80.2707184
+        // }
+        // this.waypoints2 = [
+        //   {location: { lat: 8.811316500000002, lng: 78.14516050000002 }}
         // ];
       });
   }

@@ -37,3 +37,33 @@
 <!--</agm-direction>-->
 </agm-map>
 </div>
+<div style="padding: 20px 50px 50px 20px" *ngIf="showDelivery">
+  <agm-map>
+    <agm-direction
+      *ngFor="let dir of dirs"
+      [origin]="dir.origin"
+      [destination]="dir.destination"
+      [renderOptions]="renderOptions"
+      [markerOptions]="markerOptions"
+      [waypoints]="dir.waypoints"
+    >
+    </agm-direction>
+<!--    <agm-direction-->
+<!--      [origin]="origin"-->
+<!--      [destination]="destination1"-->
+<!--      [renderOptions]="renderOptions"-->
+<!--      [markerOptions]="markerOptions"-->
+<!--      [waypoints]="waypoints1"-->
+<!--    >-->
+<!--    </agm-direction>-->
+<!--    <agm-direction-->
+<!--      [origin]="origin"-->
+<!--      [destination]="destination2"-->
+<!--      [renderOptions]="renderOptions"-->
+<!--      [markerOptions]="markerOptions"-->
+<!--      [waypoints]="waypoints2"-->
+<!--    >-->
+<!--    </agm-direction>-->
+
+  </agm-map>
+</div>
