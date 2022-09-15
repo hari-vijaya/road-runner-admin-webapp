@@ -14,7 +14,7 @@ import {MatNativeDateModule, MatOptionModule, MatRippleModule} from '@angular/ma
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddWarehouseDialogComponent } from './add-warehouse-dialog/add-warehouse-dialog.component';
-import { AgmCoreModule } from '@agm/core';
+import {AgmCoreModule, AgmMapTypeControl, AgmPolyline} from '@agm/core';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
@@ -73,7 +73,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     MatRadioModule,
     MatDatepickerModule,
     MatSelectModule,
-    AgmDirectionModule,
+    AgmDirectionModule
   ],
   providers: [GoogleMapsAPIWrapper],
   bootstrap: [AppComponent],

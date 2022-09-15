@@ -143,4 +143,60 @@ export class NavigationComponent implements OnInit {
         // ];
       });
   }
+  getDelivery() {
+    this.showMap = true;
+    this.origin1 = {
+      lat: this.currentWarehouse.warehouseLocation.location.x,
+      lng: this.currentWarehouse.warehouseLocation.location.y,
+    };
+    this.roadRunnerService
+      .getDelivery(this.currentWarehouse.id)
+      .subscribe((res: any) => {
+        console.log(res, 'response');
+        this.dirs = [];
+        this.waypoints = [];
+        res.filter((routes: any) => {
+          if (routes.packageStatuses.length > 0) {
+            routes.packageStatuses.filter((waypoints: any) => {
+              this.waypoints.push({
+                location:
+                  new google.maps.LatLng(waypoints.address.location.x,  waypoints.address.location.y)
+              });
+            });
+
+            let maxVal = 0xffffff; // 16777215
+            let randomNumber = Math.random() * maxVal;
+            randomNumber = Math.floor(randomNumber);
+            let randomColor = randomNumber.toString(16);
+            // document.body.style.backgroundColor = "#" + randomColor;
+            const color = '#' + randomColor;
+            this.dirs.push({
+              origin: new google.maps.LatLng(10.8298389, 78.66647329999999),
+              destination: new google.maps.LatLng(
+                10.8298389,
+                78.66647329999999
+              ),
+              waypoints: this.waypoints,
+              renderOptions: {
+                polylineOptions: { strokeColor: 'blue' },
+              },
+            });
+
+            console.log(this.dirs, 'rourttes');
+          }
+        });
+
+        this.destination1 = {
+          lat: res[res.length - 1].packageStatuses[res[res.length - 1].packageStatuses.length - 1].address.location.x,
+          lng: res[res.length - 1].packageStatuses[res[res.length - 1].packageStatuses.length - 1].address.location.y,
+        };
+        console.log(this.destination1, 'destination1');
+        // this.waypoints = [
+        //   {location: { lat: res.packageStatuses.address.location.x, lng: res.packageStatuses.address.location.y }},
+        //   {location: { lat: 11.6692642, lng: 78.1101747 }},
+        //   {location: { lat: 11.775541, lng: 77.7983797 }},
+        //   {location: { lat: 10.6475225, lng: 76.9639036 }}
+        // ];
+      });
+  }
 }

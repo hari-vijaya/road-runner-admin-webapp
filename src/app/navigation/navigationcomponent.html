@@ -16,7 +16,7 @@
     </mat-autocomplete>
   </mat-form-field>
   <button mat-raised-button color="primary" (click)="getPickup()">Get Navigation Pickup</button>&nbsp;&nbsp;
-  <button mat-raised-button color="primary">Get Navigation Delivery</button>
+  <button mat-raised-button color="primary" (click)="getDelivery()">Get Navigation Delivery</button>
 </form>
 </div>
 <div style="padding: 20px 50px 50px 20px" *ngIf="showMap">

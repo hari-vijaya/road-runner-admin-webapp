@@ -12,21 +12,21 @@ export class RoadRunnerService {
 
   getAllWarehouses(): Observable<WarehouseResponse[]> {
     return this.httpClient.get<WarehouseResponse[]>(
-      'https://roadrunnerapi-7zjtqk6yoq-el.a.run.app:443/warehouses/getAll'
+      'https://roadrunnerapi-7zjtqk6yoq-uc.a.run.app/warehouses/getAll'
     );
   }
 
   saveWarehouse(warehouse: Warehouse) {
     console.log(warehouse);
     return this.httpClient.post(
-      'https://roadrunnerapi-7zjtqk6yoq-el.a.run.app:443/warehouses',
+      'https://roadrunnerapi-7zjtqk6yoq-uc.a.run.app/warehouses',
       warehouse
     );
   }
   saveDriver(driver: any) {
     console.log(driver);
     return this.httpClient.post(
-      'https://roadrunnerapi-7zjtqk6yoq-el.a.run.app:443/drivers/save',
+      'https://roadrunnerapi-7zjtqk6yoq-uc.a.run.app/drivers/save',
       driver
     );
   }
@@ -34,18 +34,24 @@ export class RoadRunnerService {
   saveVehicles(warehouse: Vehicle) {
     console.log(warehouse);
     return this.httpClient.post(
-      'https://roadrunnerapi-7zjtqk6yoq-el.a.run.app:443/warehouses',
+      'https://roadrunnerapi-7zjtqk6yoq-uc.a.run.app/warehouses',
       warehouse
     );
   }
   getAllDriversList(): Observable<Drivers[]> {
     return this.httpClient.get<Drivers[]>(
-      'https://roadrunnerapi-7zjtqk6yoq-el.a.run.app:443/drivers/getAll'
+      'https://roadrunnerapi-7zjtqk6yoq-uc.a.run.app/drivers/getAll'
     );
   }
   getStartPickups(id: any) {
     return this.httpClient.post(
       'https://vehiclecapacityplanner-7zjtqk6yoq-el.a.run.app:443/vehicle-capacity-service/warehouse/start-pick-ups?warehouseId=' + id,
+      {}
+    );
+  }
+  getDelivery(id: any) {
+    return this.httpClient.post(
+      'https://vehiclecapacityplanner-7zjtqk6yoq-el.a.run.app:443/vehicle-capacity-service/warehouse/start-pick-ups-deliveries?warehouseId=' + id,
       {}
     );
   }
