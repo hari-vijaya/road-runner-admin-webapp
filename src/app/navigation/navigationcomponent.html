@@ -22,12 +22,11 @@
 <div style="padding: 20px 50px 50px 20px" *ngIf="showMap">
 <agm-map>
 <agm-direction
-  *ngFor="let route of routes"
-  [origin]="origin1"
-  [destination]="destination1"
-  [renderOptions]="route.renderOptions"
-  [markerOptions]="markerOptions"
-  [waypoints]="route.waypoints"
+  *ngFor="let dir of dirs"
+  [origin]="dir.origin"
+  [destination]="dir.destination"
+  [renderOptions]="dir.renderOptions"
+  [waypoints]="dir.waypoints"
 >
 </agm-direction>
 <!--<agm-direction-->

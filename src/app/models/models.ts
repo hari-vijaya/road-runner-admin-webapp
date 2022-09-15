@@ -56,3 +56,10 @@ export type Drivers = {
       "bloodGroup": string,
       "gender": string,
 }
+
+export type DirectionsAgm = {
+  origin: google.maps.LatLng;
+  destination: google.maps.LatLng;
+  renderOptions: google.maps.DirectionsRendererOptions;
+  waypoints: google.maps.DirectionsWaypoint[];
+};
