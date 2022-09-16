@@ -42,7 +42,6 @@ export type Vehicle = {
 export class VehiclesComponent implements OnInit {
   displayedColumns: string[] = [
     'vin',
-    'vehicleNumber',
     'make',
     'model',
     'insurancePolicyNumber',
@@ -77,13 +76,15 @@ export class VehiclesComponent implements OnInit {
     lastUpdatedWarehouseId: '',
     status: 0
   };
-  dataSource: Vehicle[] = [];
+  dataSource: any[] = [];
   constructor(
     private dialog: MatDialog,
     private roadRunnerService: RoadRunnerService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.roadRunnerService.getAllVehicles().subscribe(result => this.dataSource = result);
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddVehicleDialogComponent, {

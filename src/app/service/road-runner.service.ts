@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {WarehouseResponse, Warehouse, Drivers} from '../models/models';
+import { WarehouseResponse, Warehouse, Drivers } from '../models/models';
 import { Vehicle } from '../vehicles/vehicles.component';
 
 @Injectable({
@@ -45,15 +45,22 @@ export class RoadRunnerService {
   }
   getStartPickups(id: any) {
     return this.httpClient.post(
-      'https://vehiclecapacityplanner-7zjtqk6yoq-el.a.run.app:443/vehicle-capacity-service/warehouse/start-pick-ups?warehouseId=' + id,
+      'https://vehiclecapacityplanner-7zjtqk6yoq-el.a.run.app:443/vehicle-capacity-service/warehouse/start-pick-ups?warehouseId=' +
+        id,
       {}
     );
   }
   getDelivery(id: any) {
     return this.httpClient.post(
-      'https://vehiclecapacityplanner-7zjtqk6yoq-el.a.run.app:443/vehicle-capacity-service/warehouse/start-pick-ups-deliveries?warehouseId=' + id,
+      'https://vehiclecapacityplanner-7zjtqk6yoq-el.a.run.app:443/vehicle-capacity-service/warehouse/start-pick-ups-deliveries?warehouseId=' +
+        id,
       {}
     );
   }
 
+  getAllVehicles() {
+    return this.httpClient.get<Vehicle[]>(
+      'https://roadrunnerapi-7zjtqk6yoq-uc.a.run.app/vehicles/getAll'
+    );
+  }
 }

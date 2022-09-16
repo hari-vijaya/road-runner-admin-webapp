@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: beige;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #F7FAFF !important;}
 
 // Import functions, variables, and mixins needed by other Bootstrap files
 @import "~bootstrap/scss/functions";
@@ -11,3 +11,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background:
 // Import Bootstrap Reboot
 //@import "~bootstrap/scss/root"; // Contains :root CSS variables used by other Bootstrap files
 @import "~bootstrap/scss/reboot";
+
+table {
+  background-color: #FFFFFF !important;
+}

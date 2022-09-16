@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "create-image": "docker build -t roadrunnerwebapp . && docker tag roadrunnerwebapp asia-south1-docker.pkg.dev/milkfarm/roadrunner/roadrunnerwebapp",
-    "publish": "docker push  asia-south1-docker.pkg.dev/milkfarm/roadrunner/roadrunnerwebapp"
+    "create-image": "docker build -t roadrunneradminwebapp . && docker tag roadrunneradminwebapp asia-south1-docker.pkg.dev/milkfarm/roadrunner/roadrunneradminwebapp",
+    "publish": "docker push  asia-south1-docker.pkg.dev/milkfarm/roadrunner/roadrunneradminwebapp"
   },
   "private": true,
   "dependencies": {
